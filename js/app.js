@@ -5,17 +5,6 @@
 var csvurl = "https://raw.githubusercontent.com/kerguio/mapping/main/files/Blue_Plaque_Park_Lane.csv";
 var icourl = "img/marker.png"
 
-// Initialize event listeners for filter checkboxes
-var accessSelect = document.querySelector("input[name=access-select]");
-var genderSelect = document.querySelector("input[name=gender-select]");
-
-accessSelect.addEventListener("change", function(){
-  mapFeatures(accessSelect.checked, genderSelect.checked);
-});
-
-genderSelect.addEventListener("change", function(){
-  mapFeatures(accessSelect.checked, genderSelect.checked);
-});
 
 // Function to create geoJson object from flat Json data
 function geojson(features) {
@@ -127,27 +116,7 @@ function makeMap(geopoints) {
   $('#filters').appendTo('#filter-control');
 }
 
-// Function to update the map features when filters are selected
-function mapFeatures(accessSelect, genderSelect) {
-  var geoJsonLayer = L.geoJson(geojson, {
-    onEachFeature: onEachFeature,
-    filter: function(feature, layer) {
-      if (accessSelect == false && genderSelect == false) {
-        return true;
-      } else if (accessSelect == true && genderSelect == false) {
-        return feature.properties.accessible.charAt(0).toLowerCase() == "y";
-      } else if (accessSelect == false && genderSelect == true) {
-        return feature.properties.gender.charAt(0).toLowerCase() == "y";
-      } else {
-        return feature.properties.accessible.charAt(0).toLowerCase() == "y" && feature.properties.gender.charAt(0).toLowerCase() == "y";
-      }
-    }
-  });
-  window.markers.clearLayers();
-  window.markers.addLayer(geoJsonLayer);
-  window.map.addLayer(window.markers);
-  window.map.flyToBounds(window.markers.getBounds());
-}
+
 
 // INITIALIZE THE MAP ON LOAD
 // Fetch CSV file, convert to json, convert json to geoJson, initialize map
