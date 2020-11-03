@@ -1,11 +1,8 @@
-// SCRIPTS FOR LONDON LOO CODES MAP
-// Coded by Ahmad Barclay. No rights reserved.
-// For more info: github.com/bothness/ldnloos
-
+// SCRIPTS FOR Storied Walks
 // SET GLOBAL VARIABLES
 
-// URL of CSV file containing geocoded data from London Loo Codes
-var csvurl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSPCH12cLRRJCZpMvalSOImqcHuDXs9BW7aCtBiGXBRf6wFAMPKOI7_40nkCS-TFoouT44RCSApPDpE/pub?gid=0&single=true&output=csv";
+// URL of CSV file containing geocoded data 
+var csvurl = "https://raw.githubusercontent.com/kerguio/mapping/main/files/BP%20Data%20-%20Sheet1.csv";
 var icourl = "img/marker.png"
 
 // Initialize event listeners for filter checkboxes
