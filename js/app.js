@@ -20,12 +20,11 @@ function geojson(features) {
           "coordinates": [features[feature].longitude, features[feature].latitude]
         },
         "properties": {
-          "name": features[feature].cafe_name,
-          "code": features[feature].code,
-          "accessible": features[feature].accessible,
-          "gender": features[feature].gender_neutral,
+          "name": features[feature].name,
+          "fame": features[feature].Famous_for,
+          "address": features[feature].address,
+          "hear": features[feature].hear_the_story,
           "station": features[feature].nearest_station,
-          "received": features[feature].code_received
         }
       };
       geojson.features.push(loo);
@@ -37,8 +36,8 @@ function geojson(features) {
 // Function to process features in geoJson for map layer
 function onEachFeature(feature, layer) {
   var name = feature.properties.name;
-  var code = feature.properties.code;
-  var accessible = feature.properties.accessible;
+  var fame = feature.properties.fame;
+  var address = feature.properties.address;
   if (accessible == "Y") {
     accessible = "Yes";
   } else if (accessible == "N") {
@@ -51,11 +50,10 @@ function onEachFeature(feature, layer) {
     gender = "No";
   }
   var station = feature.properties.station;
-  var received = feature.properties.received;
   var lat = feature.geometry.coordinates[1];
   var lon = feature.geometry.coordinates[0];
   var url = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
-  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station + "<br><strong>Access Code:</strong> " + code + "<br><strong>Accessible:</strong> " + accessible + "<br><strong>Gender Neutral:</strong> " + gender + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>(Code provided on ' + received + ')';
+  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station + "<br><strong>Access Code:</strong> " + code + "<br><strong>Accessible:</strong> " + accessible + "<br><strong>Gender Neutral:</strong> " + gender + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
   layer.bindPopup(html);
   var myIcon = L.icon({
     iconUrl: 'img/marker.png',
