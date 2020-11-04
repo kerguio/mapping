@@ -43,7 +43,7 @@ function onEachFeature(feature, layer) {
   var lat = feature.geometry.coordinates[1];
   var lon = feature.geometry.coordinates[0];
   var url = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
-  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station + "<br><strong>Access Code:</strong> " + code + "<br><strong>Address:</strong> " + address + "<br><strong>Famous for:</strong> " + fame + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
+  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station +  "<br><strong>Address:</strong> " + address + "<br><strong>Famous for:</strong> " + fame + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
   layer.bindPopup(html);
   var myIcon = L.icon({
     iconUrl: 'img/marker.png',
