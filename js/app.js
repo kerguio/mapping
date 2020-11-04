@@ -38,12 +38,12 @@ function onEachFeature(feature, layer) {
   var name = feature.properties.name;
   var fame = feature.properties.fame;
   var address = feature.properties.address;
-  var gender = feature.properties.gender;
+  var fame = feature.properties.fame;
   var station = feature.properties.station;
   var lat = feature.geometry.coordinates[1];
   var lon = feature.geometry.coordinates[0];
   var url = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
-  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station + "<br><strong>Access Code:</strong> " + code + "<br><strong>Accessible:</strong> " + accessible + "<br><strong>Gender Neutral:</strong> " + gender + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
+  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station + "<br><strong>Access Code:</strong> " + code + "<br><strong>Address:</strong> " + address + "<br><strong>Famous for:</strong> " + fame + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
   layer.bindPopup(html);
   var myIcon = L.icon({
     iconUrl: 'img/marker.png',
