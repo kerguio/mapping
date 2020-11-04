@@ -38,17 +38,7 @@ function onEachFeature(feature, layer) {
   var name = feature.properties.name;
   var fame = feature.properties.fame;
   var address = feature.properties.address;
-  if (accessible == "Y") {
-    accessible = "Yes";
-  } else if (accessible == "N") {
-    accessible = "No";
-  }
   var gender = feature.properties.gender;
-  if (gender == "Y") {
-    gender = "Yes";
-  } else if (gender == "N") {
-    gender = "No";
-  }
   var station = feature.properties.station;
   var lat = feature.geometry.coordinates[1];
   var lon = feature.geometry.coordinates[0];
