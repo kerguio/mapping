@@ -45,7 +45,7 @@ function onEachFeature(feature, layer) {
   layer.bindPopup(html);
   var myIcon = L.icon({
     iconUrl: 'img/marker.png',
-    iconSize: [25, 30],
+    iconSize: [30, 30],
     iconAnchor: [12, 30],
     popupAnchor: [0, -25]
   });
