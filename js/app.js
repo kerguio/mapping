@@ -13,7 +13,7 @@ function geojson(features) {
     let lng = features[feature].longitude;
     let lat = features[feature].latitude;
     if ($.isNumeric(lng) && $.isNumeric(lat) && lng < 1 && lng > -1 && lat < 52 && lat > 51) {
-      var loo = {
+      var plak = {
         "type": "Feature",
         "geometry": {
           "type": "Point",
@@ -22,12 +22,11 @@ function geojson(features) {
         "properties": {
           "name": features[feature].name,
           "fame": features[feature].Famous_for,
-          "address": features[feature].address,
+          "Address": features[feature].Address,
           "hear": features[feature].hear_the_story,
-          "station": features[feature].nearest_station,
         }
       };
-      geojson.features.push(loo);
+      geojson.features.push(plak);
     };
   };
   return geojson;
@@ -37,13 +36,12 @@ function geojson(features) {
 function onEachFeature(feature, layer) {
   var name = feature.properties.name;
   var fame = feature.properties.fame;
-  var address = feature.properties.address;
+  var Address = feature.properties.Address;
   var fame = feature.properties.fame;
-  var station = feature.properties.station;
   var lat = feature.geometry.coordinates[1];
   var lon = feature.geometry.coordinates[0];
   var url = "https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lon;
-  var html = "<h3>" + name + "</h3><strong>Nearest Station:</strong> " + station +  "<br><strong>Address:</strong> " + address + "<br><strong>Famous for:</strong> " + fame + '<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
+  var html = "<h3>" + name + "</h3><strong>Famous for:</strong> " + fame + '<br><strong>Address:</strong> " + Address + "<br><br><a href="' + url + '" target="_blank">Get Google Maps directions</a><br><br>';
   layer.bindPopup(html);
   var myIcon = L.icon({
     iconUrl: 'img/marker.png',
